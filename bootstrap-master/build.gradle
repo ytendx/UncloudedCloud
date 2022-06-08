@@ -1,24 +1,24 @@
 plugins {
-    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-group 'de.ytendx'
-version 'unspecified'
+java.sourceCompatibility = JavaVersion.VERSION_17
+java.targetCompatibility = JavaVersion.VERSION_17
 
-repositories {
-    mavenCentral()
+shadowJar {
+}
+
+tasks.assemble.dependsOn tasks.shadowJar
+
+application {
+    mainClass = 'de.ytendx.mccloud.master.Launcher'
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.20'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3'
+    implementation project(':api')
+    implementation project(':common')
 
-    implementation project(":api")
-    implementation project(":common")
-}
-
-test {
-    useJUnitPlatform()
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }

@@ -1,9 +1,9 @@
 package de.ytendx.mccloud.common.redisservice;
 
-import de.ytendx.mccloud.redis.IRedisClientProvider;
-import de.ytendx.mccloud.service.IServiceGroup;
-import de.ytendx.mccloud.service.impl.BukkitService;
-import de.ytendx.mccloud.service.impl.ProxyService;
+import de.ytendx.mccloud.api.redis.IRedisClientProvider;
+import de.ytendx.mccloud.api.service.IServiceGroup;
+import de.ytendx.mccloud.api.service.impl.BukkitService;
+import de.ytendx.mccloud.api.service.impl.ProxyService;
 import lombok.Getter;
 import org.redisson.api.RList;
 

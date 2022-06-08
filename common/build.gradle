@@ -2,22 +2,12 @@ plugins {
     id 'java'
 }
 
-group 'de.ytendx'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
+java.sourceCompatibility = JavaVersion.VERSION_17
+java.targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.20'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation project(':api')
 
-    implementation project(":api")
-
-}
-
-test {
-    useJUnitPlatform()
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }

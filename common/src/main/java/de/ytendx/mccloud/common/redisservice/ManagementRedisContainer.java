@@ -1,7 +1,7 @@
 package de.ytendx.mccloud.common.redisservice;
 
-import de.ytendx.mccloud.management.IRunningCloudManagementService;
-import de.ytendx.mccloud.redis.IRedisClientProvider;
+import de.ytendx.mccloud.api.management.IRunningCloudManagementService;
+import de.ytendx.mccloud.api.redis.IRedisClientProvider;
 import lombok.Getter;
 import org.redisson.api.RList;
 
