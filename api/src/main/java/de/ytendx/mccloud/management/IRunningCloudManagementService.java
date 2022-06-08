@@ -7,5 +7,6 @@ public interface IRunningCloudManagementService {
     IRedisClientProvider getRedissonClientProvider();
     RunningCloudManagementServiceType type();
     String uid();
+    void tick();
 
 }
