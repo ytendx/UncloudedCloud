@@ -1,6 +1,6 @@
 package de.ytendx.mccloud.management.status.content;
 
-import de.ytendx.mccloud.service.IService;
+import de.ytendx.mccloud.api.service.IService;
 
 public abstract non-sealed class ServiceReportContent implements IReportContent{
 
