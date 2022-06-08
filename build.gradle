@@ -1,0 +1,12 @@
+subprojects {
+    group 'de.ytendx'
+    version '1.0.0-SNAPSHOT'
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}

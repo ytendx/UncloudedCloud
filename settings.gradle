@@ -1,0 +1,6 @@
+rootProject.name = 'MCCloudSystem'
+include 'common'
+include 'bootstrap'
+include 'api'
+include 'bootstrap-master'
+
