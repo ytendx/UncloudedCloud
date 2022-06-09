@@ -7,7 +7,7 @@ import de.ytendx.mccloud.api.entity.ServiceGroup;
 import de.ytendx.mccloud.api.redis.IRedisClientProvider;
 import de.ytendx.mccloud.api.redis.RedisClientProviderImpl;
 import de.ytendx.mccloud.common.database.DatabaseProviderImpl;
-import de.ytendx.mccloud.master.configuration.EnviromentalConfigurationValueContainer;
+import de.ytendx.mccloud.common.configuration.EnviromentalConfigurationValueContainer;
 import org.redisson.codec.JsonJacksonCodec;
 
 public final class Launcher {

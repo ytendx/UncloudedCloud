@@ -1,4 +1,4 @@
-package de.ytendx.mccloud.master.configuration;
+package de.ytendx.mccloud.common.configuration;
 
 import lombok.Getter;
 

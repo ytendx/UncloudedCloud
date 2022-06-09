@@ -8,7 +8,7 @@ import de.ytendx.mccloud.common.redisservice.GeneralRedisContainer;
 import de.ytendx.mccloud.common.redisservice.ManagementRedisContainer;
 import de.ytendx.mccloud.common.repo.ServiceListRepositoryImpl;
 import de.ytendx.mccloud.common.util.TickRunner;
-import de.ytendx.mccloud.master.configuration.EnviromentalConfigurationValueContainer;
+import de.ytendx.mccloud.common.configuration.EnviromentalConfigurationValueContainer;
 import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package de.ytendx.mccloud.management.status.content;
+package de.ytendx.mccloud.api.management.status.content;
 
 public interface IDeviceLoadContent {
 

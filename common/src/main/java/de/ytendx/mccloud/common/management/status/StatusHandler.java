@@ -1,7 +1,7 @@
 package de.ytendx.mccloud.common.management.status;
 
 import de.ytendx.mccloud.api.redis.IRedisClientProvider;
-import de.ytendx.mccloud.management.status.IStatusReport;
+import de.ytendx.mccloud.api.management.status.IStatusReport;
 
 public class StatusHandler {
 
