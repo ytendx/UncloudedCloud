@@ -1,10 +1,10 @@
 package de.ytendx.mccloud.api.management.status.content;
 
-import de.ytendx.mccloud.api.service.IService;
+import de.ytendx.mccloud.api.service.Service;
 
-public abstract non-sealed class ServiceReportContent implements IReportContent{
+public abstract non-sealed class ServiceReportContent implements ReportContent {
 
-    public abstract IService service();
+    public abstract Service service();
     public abstract int onlinePlayers();
     public abstract double mspt();
 

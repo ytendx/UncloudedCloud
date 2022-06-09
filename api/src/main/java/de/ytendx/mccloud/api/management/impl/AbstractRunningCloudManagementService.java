@@ -1,15 +1,15 @@
 package de.ytendx.mccloud.api.management.impl;
 
-import de.ytendx.mccloud.api.management.IRunningCloudManagementService;
+import de.ytendx.mccloud.api.management.RunningCloudManagementService;
 import de.ytendx.mccloud.api.management.RunningCloudManagementServiceType;
-import de.ytendx.mccloud.api.redis.IRedisClientProvider;
+import de.ytendx.mccloud.api.redis.RedisClientProvider;
 
-public abstract class AbstractRunningCloudManagementService implements IRunningCloudManagementService {
+public abstract class AbstractRunningCloudManagementService implements RunningCloudManagementService {
 
     private final RunningCloudManagementServiceType runningCloudManagementServiceType;
-    private final IRedisClientProvider redisClientProvider;
+    private final RedisClientProvider redisClientProvider;
 
-    protected AbstractRunningCloudManagementService(RunningCloudManagementServiceType runningCloudManagementServiceType, IRedisClientProvider redisClientProvider) {
+    protected AbstractRunningCloudManagementService(RunningCloudManagementServiceType runningCloudManagementServiceType, RedisClientProvider redisClientProvider) {
         this.runningCloudManagementServiceType = runningCloudManagementServiceType;
         this.redisClientProvider = redisClientProvider;
     }
@@ -20,7 +20,7 @@ public abstract class AbstractRunningCloudManagementService implements IRunningC
     }
 
     @Override
-    public IRedisClientProvider getRedissonClientProvider() {
+    public RedisClientProvider getRedissonClientProvider() {
         return this.redisClientProvider;
     }
 }

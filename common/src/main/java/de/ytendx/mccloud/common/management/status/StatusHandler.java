@@ -1,16 +1,16 @@
 package de.ytendx.mccloud.common.management.status;
 
-import de.ytendx.mccloud.api.redis.IRedisClientProvider;
-import de.ytendx.mccloud.api.management.status.IStatusReport;
+import de.ytendx.mccloud.api.redis.RedisClientProvider;
+import de.ytendx.mccloud.api.management.status.StatusReport;
 
 public class StatusHandler {
 
-    private final IRedisClientProvider redisClientProvider;
+    private final RedisClientProvider redisClientProvider;
 
-    public StatusHandler(IRedisClientProvider redisClientProvider) {
+    public StatusHandler(RedisClientProvider redisClientProvider) {
         this.redisClientProvider = redisClientProvider;
 
-        redisClientProvider.client().getTopic("status").addListener(IStatusReport.class, (channel, msg) -> {
+        redisClientProvider.client().getTopic("status").addListener(StatusReport.class, (channel, msg) -> {
 
         });
     }

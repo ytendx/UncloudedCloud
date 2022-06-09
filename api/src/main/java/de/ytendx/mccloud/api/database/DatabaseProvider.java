@@ -2,7 +2,7 @@ package de.ytendx.mccloud.api.database;
 
 import org.hibernate.SessionFactory;
 
-public interface IDatabaseProvider {
+public interface DatabaseProvider {
 
     void addEntity(Class<?> entity);
 

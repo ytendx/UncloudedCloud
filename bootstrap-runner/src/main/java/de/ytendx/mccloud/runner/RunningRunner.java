@@ -1,11 +1,11 @@
 package de.ytendx.mccloud.runner;
 
 import de.ytendx.mccloud.api.management.impl.RunningRunnerCloudService;
-import de.ytendx.mccloud.api.redis.IRedisClientProvider;
-import de.ytendx.mccloud.api.running.IRuntimeExecutable;
+import de.ytendx.mccloud.api.redis.RedisClientProvider;
+import de.ytendx.mccloud.api.running.RuntimeExecutable;
 
-public class RunningRunner extends RunningRunnerCloudService implements IRuntimeExecutable {
-    protected RunningRunner(IRedisClientProvider redisClientProvider) {
+public class RunningRunner extends RunningRunnerCloudService implements RuntimeExecutable {
+    protected RunningRunner(RedisClientProvider redisClientProvider) {
         super(redisClientProvider);
     }
 

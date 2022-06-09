@@ -2,7 +2,7 @@ package de.ytendx.mccloud.api.redis.requesting;
 
 import java.util.function.Consumer;
 
-public interface IRedisRequestPool<Q extends IRedisRequestQuestion, A extends IRedisRequestAnswer> {
+public interface RedisRequestPool<Q extends RedisRequestQuestion, A extends RedisRequestAnswer> {
 
     String channel();
 

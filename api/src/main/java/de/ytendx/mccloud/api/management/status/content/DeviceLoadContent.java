@@ -1,6 +1,6 @@
 package de.ytendx.mccloud.api.management.status.content;
 
-public interface IDeviceLoadContent {
+public interface DeviceLoadContent {
 
     int ramUsageInMB();
     int cpuUsage();

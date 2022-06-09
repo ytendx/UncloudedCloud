@@ -1,9 +1,9 @@
 package de.ytendx.mccloud.master;
 
 import de.ytendx.mccloud.api.management.impl.RunningMasterCloudService;
-import de.ytendx.mccloud.api.redis.IRedisClientProvider;
+import de.ytendx.mccloud.api.redis.RedisClientProvider;
 import de.ytendx.mccloud.api.repo.ServiceGroupRepository;
-import de.ytendx.mccloud.api.running.IRuntimeExecutable;
+import de.ytendx.mccloud.api.running.RuntimeExecutable;
 import de.ytendx.mccloud.common.redisservice.GeneralRedisContainer;
 import de.ytendx.mccloud.common.redisservice.ManagementRedisContainer;
 import de.ytendx.mccloud.common.repo.ServiceListRepositoryImpl;
@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import java.util.UUID;
 
 @Getter
-public final class RunningMaster extends RunningMasterCloudService implements IRuntimeExecutable {
+public final class RunningMaster extends RunningMasterCloudService implements RuntimeExecutable {
 
     public static RunningMaster INSTANCE;
 
@@ -30,7 +30,7 @@ public final class RunningMaster extends RunningMasterCloudService implements IR
 
     private final ServiceGroupRepository serviceGroupRepository;
 
-    public RunningMaster(IRedisClientProvider iRedisClientProvider,
+    public RunningMaster(RedisClientProvider iRedisClientProvider,
                          SessionFactory sessionFactory,
                          EnviromentalConfigurationValueContainer enviromentalConfigurationValueContainer) {
         super(iRedisClientProvider);

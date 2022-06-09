@@ -1,6 +1,6 @@
 package de.ytendx.mccloud.api.running;
 
-public interface IRuntimeExecutable {
+public interface RuntimeExecutable {
 
     void start(String[] args);
     void stop(String reason);

@@ -1,6 +1,6 @@
 package de.ytendx.mccloud.api.service.config;
 
-public interface IServiceTempConfig {
+public interface ServiceTempConfig {
 
     int maxPlayers();
     int maxMemory();

@@ -1,28 +1,28 @@
 package de.ytendx.mccloud.api.service.impl;
 
-import de.ytendx.mccloud.api.service.IService;
-import de.ytendx.mccloud.api.service.IServiceGroup;
-import de.ytendx.mccloud.api.service.config.IServiceTempConfig;
+import de.ytendx.mccloud.api.service.Service;
+import de.ytendx.mccloud.api.service.ServiceGroup;
+import de.ytendx.mccloud.api.service.config.ServiceTempConfig;
 import de.ytendx.mccloud.api.service.servicedatacontainers.ServiceStartDataContainable;
 import de.ytendx.mccloud.api.service.servicedatacontainers.ServiceStopDataContainable;
 
-public abstract class AbstractService implements IService {
+public abstract class AbstractService implements Service {
 
-    private final IServiceGroup<?> parent;
-    private final IServiceTempConfig config;
+    private final ServiceGroup<?> parent;
+    private final ServiceTempConfig config;
 
-    public AbstractService(IServiceGroup<?> parent, IServiceTempConfig config) {
+    public AbstractService(ServiceGroup<?> parent, ServiceTempConfig config) {
         this.parent = parent;
         this.config = config;
     }
 
     @Override
-    public IServiceGroup<?> parent() {
+    public ServiceGroup<?> parent() {
         return parent;
     }
 
     @Override
-    public IServiceTempConfig config() {
+    public ServiceTempConfig config() {
         return config;
     }
 

@@ -6,7 +6,7 @@ import org.redisson.client.codec.Codec;
 import org.redisson.config.Config;
 import org.redisson.config.TransportMode;
 
-public class RedisClientProviderImpl implements IRedisClientProvider {
+public class RedisClientProviderImpl implements RedisClientProvider {
 
     private final RedissonClient redissonClient;
 

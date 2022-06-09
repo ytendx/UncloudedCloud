@@ -1,10 +1,10 @@
 package de.ytendx.mccloud.api.service;
 
-import de.ytendx.mccloud.api.service.config.IServiceTempConfig;
+import de.ytendx.mccloud.api.service.config.ServiceTempConfig;
 
 import java.util.List;
 
-public interface IServiceGroup<T extends IService> {
+public interface ServiceGroup<T extends Service> {
 
     String name();
     String displayName();
@@ -14,10 +14,10 @@ public interface IServiceGroup<T extends IService> {
     int minOnlineServices();
 
     boolean isStatic();
-    Class<? extends IService> getType();
+    Class<? extends Service> getType();
 
     List<T> services();
 
-    void createService(IServiceTempConfig serviceConfig);
+    void createService(ServiceTempConfig serviceConfig);
 
 }

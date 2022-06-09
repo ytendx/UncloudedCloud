@@ -2,9 +2,9 @@ package de.ytendx.mccloud.master;
 
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import de.ytendx.mccloud.api.database.IDatabaseProvider;
+import de.ytendx.mccloud.api.database.DatabaseProvider;
 import de.ytendx.mccloud.api.entity.ServiceGroup;
-import de.ytendx.mccloud.api.redis.IRedisClientProvider;
+import de.ytendx.mccloud.api.redis.RedisClientProvider;
 import de.ytendx.mccloud.api.redis.RedisClientProviderImpl;
 import de.ytendx.mccloud.common.database.DatabaseProviderImpl;
 import de.ytendx.mccloud.common.configuration.EnviromentalConfigurationValueContainer;
@@ -17,12 +17,12 @@ public final class Launcher {
 
         EnviromentalConfigurationValueContainer valueContainer = new EnviromentalConfigurationValueContainer();
 
-        IRedisClientProvider redisClientProvider = new RedisClientProviderImpl(
+        RedisClientProvider redisClientProvider = new RedisClientProviderImpl(
                 new JsonJacksonCodec(JsonMapper.builder().addModule(new JavaTimeModule()).build()),
                 valueContainer.getRedisURL(), valueContainer.getRedisPW()
         );
 
-        IDatabaseProvider databaseProvider = new DatabaseProviderImpl(
+        DatabaseProvider databaseProvider = new DatabaseProviderImpl(
                 System.getenv("DB_URL"),
                 System.getenv("DB_USER"),
                 System.getenv("DB_PASS"),

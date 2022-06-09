@@ -1,11 +1,11 @@
 package de.ytendx.mccloud.common.database;
 
-import de.ytendx.mccloud.api.database.IDatabaseProvider;
+import de.ytendx.mccloud.api.database.DatabaseProvider;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public final class DatabaseProviderImpl implements IDatabaseProvider {
+public final class DatabaseProviderImpl implements DatabaseProvider {
     private final Configuration configuration;
     private SessionFactory sessionFactory;
 

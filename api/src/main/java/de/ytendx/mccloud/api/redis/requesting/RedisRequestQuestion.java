@@ -1,6 +1,6 @@
 package de.ytendx.mccloud.api.redis.requesting;
 
-public interface IRedisRequestQuestion {
+public interface RedisRequestQuestion {
 
     String desc();
 
