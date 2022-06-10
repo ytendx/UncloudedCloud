@@ -1,6 +1,7 @@
-package de.ytendx.mccloud.api.management.status.content;
+package de.ytendx.mccloud.api.management.status.content.runner;
 
 import de.ytendx.mccloud.api.management.RunningCloudManagementService;
+import de.ytendx.mccloud.api.management.status.content.ReportContent;
 
 public abstract non-sealed class RunnerReportContent implements ReportContent {
 

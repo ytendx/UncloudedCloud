@@ -8,6 +8,7 @@ public interface Service {
 
     ServiceGroup<?> parent();
     ServiceTempConfig config();
+    ServiceState state();
 
     void start(ServiceStartDataContainable serviceStartDataContainable);
     void stop(ServiceStopDataContainable serviceStopDataContainable);
