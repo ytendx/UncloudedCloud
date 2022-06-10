@@ -7,7 +7,7 @@ import de.ytendx.mccloud.api.entity.ServiceGroup;
 import de.ytendx.mccloud.api.redis.RedisClientProvider;
 import de.ytendx.mccloud.api.redis.RedisClientProviderImpl;
 import de.ytendx.mccloud.common.database.DatabaseProviderImpl;
-import de.ytendx.mccloud.common.configuration.EnviromentalConfigurationValueContainer;
+import de.ytendx.mccloud.master.configuration.MasterEnvVariableValueContainer;
 import org.redisson.codec.JsonJacksonCodec;
 
 public final class Launcher {
@@ -15,7 +15,7 @@ public final class Launcher {
     public static void main(String[] args) throws IllegalAccessException {
         System.out.println("Launching ...");
 
-        EnviromentalConfigurationValueContainer valueContainer = new EnviromentalConfigurationValueContainer();
+        MasterEnvVariableValueContainer valueContainer = new MasterEnvVariableValueContainer();
 
         RedisClientProvider redisClientProvider = new RedisClientProviderImpl(
                 new JsonJacksonCodec(JsonMapper.builder().addModule(new JavaTimeModule()).build()),
