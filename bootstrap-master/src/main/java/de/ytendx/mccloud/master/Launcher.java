@@ -3,7 +3,7 @@ package de.ytendx.mccloud.master;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import de.ytendx.mccloud.api.redis.RedisClientProvider;
-import de.ytendx.mccloud.api.redis.RedisClientProviderImpl;
+import de.ytendx.mccloud.common.redis.RedisClientProviderImpl;
 import de.ytendx.mccloud.master.configuration.MasterEnvVariableValueContainer;
 import org.redisson.codec.JsonJacksonCodec;
 

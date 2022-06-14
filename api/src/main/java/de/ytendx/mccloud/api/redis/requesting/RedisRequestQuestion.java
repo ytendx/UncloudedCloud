@@ -2,6 +2,10 @@ package de.ytendx.mccloud.api.redis.requesting;
 
 public interface RedisRequestQuestion {
 
-    String desc();
+    String id();
+
+    default String desc(){
+        return "Unclouded Cloud Redis Question";
+    }
 
 }

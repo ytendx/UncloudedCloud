@@ -1,5 +1,6 @@
-package de.ytendx.mccloud.api.redis;
+package de.ytendx.mccloud.common.redis;
 
+import de.ytendx.mccloud.api.redis.RedisClientProvider;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.client.codec.Codec;
