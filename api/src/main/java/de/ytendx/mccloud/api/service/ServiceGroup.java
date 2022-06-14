@@ -15,6 +15,7 @@ public interface ServiceGroup<T extends Service> {
     int minOnlineServices();
 
     int onlineServices();
+    int maxPlayers();
 
     boolean isStatic();
     ServiceType getType();

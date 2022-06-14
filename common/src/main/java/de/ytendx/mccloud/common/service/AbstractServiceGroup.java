@@ -17,18 +17,20 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
     private final int maxPoolMemory;
     private final int maxOnlineServices;
     private final int minOnlineServices;
+    private final int maxOnlinePlayers;
     private final boolean staticGroup;
     private final ServiceType serviceType;
 
     // RUNNING
     private final List<T> services;
 
-    protected AbstractServiceGroup(String name, String displayName, int maxPoolMemory, int maxOnlineServices, int minOnlineServices, boolean staticGroup, ServiceType serviceType) {
+    protected AbstractServiceGroup(String name, String displayName, int maxPoolMemory, int maxOnlineServices, int minOnlineServices, int maxOnlinePlayers, boolean staticGroup, ServiceType serviceType) {
         this.name = name;
         this.displayName = displayName;
         this.maxPoolMemory = maxPoolMemory;
         this.maxOnlineServices = maxOnlineServices;
         this.minOnlineServices = minOnlineServices;
+        this.maxOnlinePlayers = maxOnlinePlayers;
         this.staticGroup = staticGroup;
         this.serviceType = serviceType;
         this.services = new CopyOnWriteArrayList<>();
@@ -42,6 +44,7 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
         this.minOnlineServices = groupModel.minOnlineServices();
         this.staticGroup = groupModel.isStatic();
         this.serviceType = groupModel.getType();
+        this.maxOnlinePlayers = groupModel.maxPlayers();
         this.services = new CopyOnWriteArrayList<>();
     }
 
@@ -88,6 +91,11 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
     @Override
     public List<T> services() {
         return services;
+    }
+
+    @Override
+    public int maxPlayers() {
+        return maxOnlinePlayers;
     }
 
     @Override

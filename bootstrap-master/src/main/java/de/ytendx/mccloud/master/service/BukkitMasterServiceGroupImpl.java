@@ -7,8 +7,8 @@ import de.ytendx.mccloud.api.service.impl.BukkitService;
 import de.ytendx.mccloud.common.service.AbstractServiceGroup;
 
 public class BukkitMasterServiceGroupImpl extends AbstractServiceGroup<BukkitService> {
-    protected BukkitMasterServiceGroupImpl(String name, String displayName, int maxPoolMemory, int maxOnlineServices, int minOnlineServices, boolean staticGroup, ServiceType serviceType) {
-        super(name, displayName, maxPoolMemory, maxOnlineServices, minOnlineServices, staticGroup, serviceType);
+    public BukkitMasterServiceGroupImpl(String name, String displayName, int maxPoolMemory, int maxOnlineServices, int minOnlineServices, int maxOnlinePlayers, boolean staticGroup, ServiceType serviceType) {
+        super(name, displayName, maxPoolMemory, maxOnlineServices, minOnlineServices, maxOnlinePlayers, staticGroup, serviceType);
     }
 
     public BukkitMasterServiceGroupImpl(ServiceGroupModel groupModel) {
@@ -20,6 +20,5 @@ public class BukkitMasterServiceGroupImpl extends AbstractServiceGroup<BukkitSer
         BukkitService bukkitService = new BukkitMasterServiceImpl(this, serviceConfig);
 
         this.services().add(bukkitService);
-
     }
 }

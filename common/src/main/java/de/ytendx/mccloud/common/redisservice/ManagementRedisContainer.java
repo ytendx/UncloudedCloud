@@ -4,15 +4,17 @@ import de.ytendx.mccloud.api.management.RunningCloudManagementService;
 import de.ytendx.mccloud.api.redis.RedisClientProvider;
 import lombok.Getter;
 import org.redisson.api.RList;
+import org.redisson.api.RMap;
+import org.redisson.api.RMapCache;
 
 @Getter
 public class ManagementRedisContainer {
 
-    private final RList<RunningCloudManagementService> managementServices;
+    private final RMapCache<String, RunningCloudManagementService> managementServices;
     private final RedisClientProvider redisClientProvider;
 
     public ManagementRedisContainer(RedisClientProvider redisClientProvider) {
         this.redisClientProvider = redisClientProvider;
-        this.managementServices = redisClientProvider.client().getList("management-services");
+        this.managementServices = redisClientProvider.client().getMap("management-services");
     }
 }

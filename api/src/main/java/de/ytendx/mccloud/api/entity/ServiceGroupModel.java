@@ -27,6 +27,9 @@ public class ServiceGroupModel implements ServiceGroup<Service> {
     @Column(name = "minOnlineServices", nullable = false)
     private int minOnlineServices;
 
+    @Column(name = "minOnlineServices", nullable = false)
+    private int maxOnlinePlayers;
+
     @Column(name = "static", nullable = false)
     private boolean isStatic;
 
@@ -64,6 +67,11 @@ public class ServiceGroupModel implements ServiceGroup<Service> {
     @Override
     public int onlineServices() {
         return -1;
+    }
+
+    @Override
+    public int maxPlayers() {
+        return maxOnlinePlayers;
     }
 
     public boolean isStatic() {

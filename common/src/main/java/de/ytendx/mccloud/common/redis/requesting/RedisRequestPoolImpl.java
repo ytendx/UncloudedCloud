@@ -16,7 +16,7 @@ public class RedisRequestPoolImpl<Q extends RedisRequestQuestion, A extends Redi
 
     private final Map<String, Consumer<A>> pool;
 
-    public RedisRequestPoolImpl(RedisClientProvider redisClientProvider, String channel, Class<? extends RedisRequestQuestion> answerClass) {
+    public RedisRequestPoolImpl(RedisClientProvider redisClientProvider, String channel, Class<? extends RedisRequestAnswer> answerClass) {
         this.redisClientProvider = redisClientProvider;
         this.channel = channel;
         this.pool = new ConcurrentHashMap<>();
