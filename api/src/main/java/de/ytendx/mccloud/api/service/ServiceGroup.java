@@ -10,11 +10,14 @@ public interface ServiceGroup<T extends Service> {
     String displayName();
 
     int maxPoolMemory();
+
     int maxOnlineServices();
     int minOnlineServices();
 
+    int onlineServices();
+
     boolean isStatic();
-    Class<? extends Service> getType();
+    ServiceType getType();
 
     List<T> services();
 

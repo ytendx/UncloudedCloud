@@ -1,10 +1,10 @@
 package de.ytendx.mccloud.api.repo;
 
-import de.ytendx.mccloud.api.entity.ServiceGroup;
+import de.ytendx.mccloud.api.entity.ServiceGroupModel;
 
 import java.util.List;
 
-public interface ServiceGroupRepository extends CRUDRepository<ServiceGroup, Long> {
+public interface ServiceGroupRepository extends CRUDRepository<ServiceGroupModel, Long> {
 
-    List<ServiceGroup> findSome();
+    List<ServiceGroupModel> findSome();
 }
