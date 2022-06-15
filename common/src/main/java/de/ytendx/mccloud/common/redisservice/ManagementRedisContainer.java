@@ -15,6 +15,6 @@ public class ManagementRedisContainer {
 
     public ManagementRedisContainer(RedisClientProvider redisClientProvider) {
         this.redisClientProvider = redisClientProvider;
-        this.managementServices = redisClientProvider.client().getMap("management-services");
+        this.managementServices = redisClientProvider.client().getMapCache("management-services");
     }
 }

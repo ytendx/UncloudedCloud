@@ -1,6 +1,7 @@
 package de.ytendx.mccloud.master.service;
 
 import de.ytendx.mccloud.api.entity.ServiceGroupModel;
+import de.ytendx.mccloud.api.service.Service;
 import de.ytendx.mccloud.api.service.ServiceType;
 import de.ytendx.mccloud.api.service.config.ServiceTempConfig;
 import de.ytendx.mccloud.api.service.impl.ProxyService;
@@ -16,9 +17,10 @@ public class ProxyMasterServiceGroupImpl extends AbstractServiceGroup<ProxyServi
     }
 
     @Override
-    public void createService(ServiceTempConfig serviceConfig) {
+    public Service createService(ServiceTempConfig serviceConfig) {
         ProxyService proxyService = new ProxyMasterServiceImpl(this, serviceConfig);
 
         this.services().add(proxyService);
+        return proxyService;
     }
 }

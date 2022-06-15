@@ -99,5 +99,5 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
     }
 
     @Override
-    public abstract void createService(ServiceTempConfig serviceConfig);
+    public abstract Service createService(ServiceTempConfig serviceConfig);
 }

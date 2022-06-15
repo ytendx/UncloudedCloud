@@ -6,18 +6,22 @@ import de.ytendx.mccloud.api.management.impl.RunningMasterCloudService;
 import de.ytendx.mccloud.api.redis.RedisClientProvider;
 import de.ytendx.mccloud.api.repo.ServiceGroupRepository;
 import de.ytendx.mccloud.api.running.RuntimeExecutable;
+import de.ytendx.mccloud.api.ticker.TickingService;
 import de.ytendx.mccloud.common.database.DatabaseProviderImpl;
 import de.ytendx.mccloud.common.redisservice.GeneralRedisContainer;
 import de.ytendx.mccloud.common.redisservice.ManagementRedisContainer;
 import de.ytendx.mccloud.common.repo.ServiceListRepositoryImpl;
 import de.ytendx.mccloud.common.util.TickRunner;
 import de.ytendx.mccloud.master.configuration.MasterEnvVariableValueContainer;
+import de.ytendx.mccloud.master.management.RunnerManager;
+import de.ytendx.mccloud.master.management.ServiceManager;
+import de.ytendx.mccloud.master.management.watcher.StatusMaintainer;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Getter
-public final class RunningMaster extends RunningMasterCloudService implements RuntimeExecutable {
+public final class RunningMaster extends RunningMasterCloudService implements RuntimeExecutable, TickingService {
 
     public static RunningMaster INSTANCE;
 
@@ -28,14 +32,19 @@ public final class RunningMaster extends RunningMasterCloudService implements Ru
     private final Logger logger = LoggerFactory.getLogger("mccloud-master");
     private final DatabaseProvider databaseProvider;
     private final ServiceGroupRepository serviceGroupRepository;
+    private final StatusMaintainer statusMaintainer;
+    private final RunnerManager runnerManager;
+    private final ServiceManager serviceManager;
 
     public RunningMaster(RedisClientProvider iRedisClientProvider,
                          MasterEnvVariableValueContainer masterEnviromentVarContainer) {
         super(iRedisClientProvider);
 
         this.configurationValueContainer = masterEnviromentVarContainer;
+
         this.generalRedisContainer = new GeneralRedisContainer(iRedisClientProvider);
         this.managementRedisContainer = new ManagementRedisContainer(iRedisClientProvider);
+        this.statusMaintainer = new StatusMaintainer(iRedisClientProvider);
 
         this.databaseProvider = new DatabaseProviderImpl(
                 masterEnviromentVarContainer.getDatabaseURL(),
@@ -51,6 +60,9 @@ public final class RunningMaster extends RunningMasterCloudService implements Ru
         this.serviceGroupRepository = new ServiceListRepositoryImpl(databaseProvider.getSessionFactory());
 
         serviceGroupRepository.findAll();
+
+        this.runnerManager = new RunnerManager(this);
+        this.serviceManager = new ServiceManager(this, runnerManager);
     }
 
     @Override
@@ -61,7 +73,7 @@ public final class RunningMaster extends RunningMasterCloudService implements Ru
     @Override
     public void start(String[] args) {
         INSTANCE = this;
-        managementRedisContainer.getManagementServices().add(this);
+        managementRedisContainer.getManagementServices().put(this.UNIQUE_ID, this);
 
         // Start ticker
         TickRunner.startTheTicker(this::tick);
@@ -74,6 +86,7 @@ public final class RunningMaster extends RunningMasterCloudService implements Ru
 
     @Override
     public void tick() {
-
+        runnerManager.tick();
+        serviceManager.tick();
     }
 }

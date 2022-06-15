@@ -1,6 +1,7 @@
 package de.ytendx.mccloud.master.service;
 
 import de.ytendx.mccloud.api.entity.ServiceGroupModel;
+import de.ytendx.mccloud.api.service.Service;
 import de.ytendx.mccloud.api.service.ServiceType;
 import de.ytendx.mccloud.api.service.config.ServiceTempConfig;
 import de.ytendx.mccloud.api.service.impl.BukkitService;
@@ -16,9 +17,10 @@ public class BukkitMasterServiceGroupImpl extends AbstractServiceGroup<BukkitSer
     }
 
     @Override
-    public void createService(ServiceTempConfig serviceConfig) {
+    public Service createService(ServiceTempConfig serviceConfig) {
         BukkitService bukkitService = new BukkitMasterServiceImpl(this, serviceConfig);
 
         this.services().add(bukkitService);
+        return bukkitService;
     }
 }
