@@ -22,6 +22,6 @@ public interface ServiceGroup<T extends Service> {
 
     List<T> services();
 
-    void createService(ServiceTempConfig serviceConfig);
+    Service createService(ServiceTempConfig serviceConfig);
 
 }

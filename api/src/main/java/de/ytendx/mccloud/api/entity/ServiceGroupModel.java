@@ -66,7 +66,7 @@ public class ServiceGroupModel implements ServiceGroup<Service> {
 
     @Override
     public int onlineServices() {
-        return -1;
+        throw new UnsupportedOperationException("It is not supported to get the online services through the group model. Please use a group from the redis cache.");
     }
 
     @Override
@@ -85,11 +85,12 @@ public class ServiceGroupModel implements ServiceGroup<Service> {
 
     @Override
     public List<Service> services() {
-        return null;
+        throw new UnsupportedOperationException("It is not supported to list the online services through the group model. Please use a group from the redis cache.");
     }
 
     @Override
-    public void createService(ServiceTempConfig serviceConfig) {
+    public Service createService(ServiceTempConfig serviceConfig) {
+        throw new UnsupportedOperationException("It is not supported to create a service through the group model. Please use a group from the redis cache.");
     }
 
     public String getStaticRunnerUID() {
