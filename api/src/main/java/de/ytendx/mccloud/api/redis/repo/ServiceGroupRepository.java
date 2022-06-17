@@ -1,4 +1,4 @@
-package de.ytendx.mccloud.api.repo;
+package de.ytendx.mccloud.api.redis.repo;
 
 import de.ytendx.mccloud.api.entity.ServiceGroupModel;
 

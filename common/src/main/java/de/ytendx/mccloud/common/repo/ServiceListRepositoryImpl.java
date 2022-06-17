@@ -1,7 +1,7 @@
 package de.ytendx.mccloud.common.repo;
 
 import de.ytendx.mccloud.api.entity.ServiceGroupModel;
-import de.ytendx.mccloud.api.repo.ServiceGroupRepository;
+import de.ytendx.mccloud.api.redis.repo.ServiceGroupRepository;
 import org.hibernate.SessionFactory;
 
 import java.util.List;

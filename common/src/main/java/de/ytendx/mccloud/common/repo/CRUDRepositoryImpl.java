@@ -1,6 +1,6 @@
 package de.ytendx.mccloud.common.repo;
 
-import de.ytendx.mccloud.api.repo.CRUDRepository;
+import de.ytendx.mccloud.api.redis.repo.CRUDRepository;
 import org.hibernate.SessionFactory;
 
 import java.util.List;

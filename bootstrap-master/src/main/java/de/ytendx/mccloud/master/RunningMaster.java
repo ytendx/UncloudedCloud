@@ -4,7 +4,7 @@ import de.ytendx.mccloud.api.database.DatabaseProvider;
 import de.ytendx.mccloud.api.entity.ServiceGroupModel;
 import de.ytendx.mccloud.api.management.impl.RunningMasterCloudService;
 import de.ytendx.mccloud.api.redis.RedisClientProvider;
-import de.ytendx.mccloud.api.repo.ServiceGroupRepository;
+import de.ytendx.mccloud.api.redis.repo.ServiceGroupRepository;
 import de.ytendx.mccloud.api.running.RuntimeExecutable;
 import de.ytendx.mccloud.api.ticker.TickingService;
 import de.ytendx.mccloud.common.database.DatabaseProviderImpl;

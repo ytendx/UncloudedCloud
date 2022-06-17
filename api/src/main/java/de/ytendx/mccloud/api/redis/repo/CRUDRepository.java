@@ -1,4 +1,4 @@
-package de.ytendx.mccloud.api.repo;
+package de.ytendx.mccloud.api.redis.repo;
 
 import java.util.List;
 
