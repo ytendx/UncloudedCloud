@@ -1,21 +1,14 @@
 package de.ytendx.mccloud.master.management;
 
-import de.ytendx.mccloud.api.entity.ServiceGroupModel;
 import de.ytendx.mccloud.api.management.RunningCloudManagementService;
 import de.ytendx.mccloud.api.management.impl.RunningRunnerCloudService;
 import de.ytendx.mccloud.api.redis.requesting.RedisRequestPool;
-import de.ytendx.mccloud.api.service.ServiceType;
-import de.ytendx.mccloud.api.service.impl.BukkitService;
 import de.ytendx.mccloud.api.ticker.TickingService;
-import de.ytendx.mccloud.common.redis.requesting.RedisRequestPoolImpl;
 import de.ytendx.mccloud.common.redisservice.requesting.service.ServiceStartRequestAnswer;
+import de.ytendx.mccloud.common.redisservice.requesting.service.ServiceStartRequestPool;
 import de.ytendx.mccloud.common.redisservice.requesting.service.ServiceStartRequestQuestion;
-import de.ytendx.mccloud.common.service.AbstractServiceGroup;
-import de.ytendx.mccloud.common.service.ServiceTempConfigImpl;
 import de.ytendx.mccloud.master.RunningMaster;
 import de.ytendx.mccloud.master.management.watcher.StatusMaintainer;
-import de.ytendx.mccloud.master.service.BukkitMasterServiceGroupImpl;
-import de.ytendx.mccloud.master.service.ProxyMasterServiceGroupImpl;
 import org.redisson.api.map.event.EntryCreatedListener;
 
 import java.util.Map;
@@ -34,8 +27,7 @@ public class RunnerManager implements TickingService {
 
         runningMaster.getManagementRedisContainer().getManagementServices().addListener((EntryCreatedListener<String, RunningCloudManagementService>) event -> {
             if(event.getValue() instanceof RunningRunnerCloudService service){
-                serviceStartRequestPool.put(service,
-                        new RedisRequestPoolImpl<>(runningMaster.getRedissonClientProvider(), "service-start_" + event.getKey(), ServiceStartRequestAnswer.class));
+                serviceStartRequestPool.put(service, new ServiceStartRequestPool(runningMaster.getRedissonClientProvider(), event.getKey()));
             }
         });
 
@@ -67,16 +59,16 @@ public class RunnerManager implements TickingService {
 
     @Override
     public void tick() {
-        for(ServiceGroupModel serviceGroupModelEntity : runningMaster.getServiceGroupRepository().findAll()){
-            if(serviceGroupModelEntity.getType().equals(ServiceType.SPIGOT)){
-                if(!runningMaster.getGeneralRedisContainer().getBukkitServices().containsKey(serviceGroupModelEntity.name())){
-                    runningMaster.getGeneralRedisContainer().getBukkitServices().put(serviceGroupModelEntity.name(), new BukkitMasterServiceGroupImpl(serviceGroupModelEntity));
-                }
-            }else{
-                if(!runningMaster.getGeneralRedisContainer().getProxyServices().containsKey(serviceGroupModelEntity.name())){
-                    runningMaster.getGeneralRedisContainer().getProxyServices().put(serviceGroupModelEntity.name(), new ProxyMasterServiceGroupImpl(serviceGroupModelEntity));
-                }
-            }
-        }
+//        for(ServiceGroupModel serviceGroupModelEntity : runningMaster.getServiceGroupRepository().findAll()){
+//            if(serviceGroupModelEntity.getType().equals(ServiceType.SPIGOT)){
+//                if(!runningMaster.getGeneralRedisContainer().getBukkitServices().containsKey(serviceGroupModelEntity.name())){
+//                    runningMaster.getGeneralRedisContainer().getBukkitServices().put(serviceGroupModelEntity.name(), new BukkitMasterServiceGroupImpl(serviceGroupModelEntity));
+//                }
+//            }else{
+//                if(!runningMaster.getGeneralRedisContainer().getProxyServices().containsKey(serviceGroupModelEntity.name())){
+//                    runningMaster.getGeneralRedisContainer().getProxyServices().put(serviceGroupModelEntity.name(), new ProxyMasterServiceGroupImpl(serviceGroupModelEntity));
+//                }
+//            }
+//        }
     }
 }

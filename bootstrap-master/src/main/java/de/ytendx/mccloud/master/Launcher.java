@@ -9,8 +9,10 @@ import org.redisson.codec.JsonJacksonCodec;
 
 public final class Launcher {
 
+    public static final String VERSION = "0.1.1-DEVELOPMENT";
+
     public static void main(String[] args) throws IllegalAccessException {
-        System.out.println("Launching ...");
+        System.out.printf("Launching Unclouded Cloud v%s....%n", VERSION);
 
         MasterEnvVariableValueContainer valueContainer = new MasterEnvVariableValueContainer();
 

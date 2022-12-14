@@ -1,36 +1,28 @@
 package de.ytendx.mccloud.master.configuration;
 
+import de.ytendx.mccloud.api.database.NullDefault;
 import de.ytendx.mccloud.common.configuration.EnviromentalConfigurationValueContainer;
 
 public class MasterEnvVariableValueContainer extends EnviromentalConfigurationValueContainer {
 
-    private String databaseURL;
-    private String databasePassword;
-    private String databaseUser;
-    private int databaseMinIdle;
-    private int maxDatabaseConnections;
+    private String minIOAccessKey;
+    private String minIOEndpoint;
+    private String minIOSecretKey;
 
     public MasterEnvVariableValueContainer() throws IllegalAccessException {
         super();
     }
 
-    public String getDatabasePassword() {
-        return databasePassword;
+
+    public String getMinIOAccessKey() {
+        return minIOAccessKey;
     }
 
-    public String getDatabaseURL() {
-        return databaseURL;
+    public String getMinIOEndpoint() {
+        return minIOEndpoint;
     }
 
-    public String getDatabaseUser() {
-        return databaseUser;
-    }
-
-    public int getDatabaseMinIdle() {
-        return databaseMinIdle;
-    }
-
-    public int getMaxDatabaseConnections() {
-        return maxDatabaseConnections;
+    public String getMinIOSecretKey() {
+        return minIOSecretKey;
     }
 }

@@ -6,6 +6,7 @@ import de.ytendx.mccloud.api.service.servicedatacontainers.ServiceStopDataContai
 
 public interface Service {
 
+    String id();
     ServiceGroup<?> parent();
     ServiceTempConfig config();
     ServiceState state();

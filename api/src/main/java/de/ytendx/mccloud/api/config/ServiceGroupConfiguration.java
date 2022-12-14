@@ -1,42 +1,42 @@
-package de.ytendx.mccloud.api.entity;
+package de.ytendx.mccloud.api.config;
 
 import de.ytendx.mccloud.api.service.Service;
 import de.ytendx.mccloud.api.service.ServiceGroup;
 import de.ytendx.mccloud.api.service.ServiceType;
 import de.ytendx.mccloud.api.service.config.ServiceTempConfig;
-import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
-@Table(name = "service_groups")
-public class ServiceGroupModel implements ServiceGroup<Service> {
 
-    @Column(name = "name", nullable = false)
+// Model for the ServiceGroup Configuration
+public class ServiceGroupConfiguration implements ServiceGroup<Service> {
+
     private String name;
 
-    @Column(name = "displayName", nullable = false)
     private String displayName;
 
-    @Column(name = "maxPoolMemory", nullable = false)
     private int maxPoolMemory;
 
-    @Column(name = "maxOnlineServices", nullable = false)
     private int maxOnlineServices;
 
-    @Column(name = "minOnlineServices", nullable = false)
     private int minOnlineServices;
 
-    @Column(name = "minOnlineServices", nullable = false)
+    /**
+     * Counted as "per service"
+     */
     private int maxOnlinePlayers;
 
-    @Column(name = "static", nullable = false)
+    /**
+     * Counted as "per service"
+     */
+    private int targetOnlinePlayers;
+
     private boolean isStatic;
 
-    @Column(name = "staticRunnerUID", nullable = true)
     private String staticRunnerUID;
 
-    @Column(name = "serviceType", nullable = false)
+    private String[] preferedRunnerUIDs;
+
     private ServiceType serviceType;
 
     @Override
@@ -86,6 +86,11 @@ public class ServiceGroupModel implements ServiceGroup<Service> {
     @Override
     public List<Service> services() {
         throw new UnsupportedOperationException("It is not supported to list the online services through the group model. Please use a group from the redis cache.");
+    }
+
+    @Override
+    public String[] preferedRunnerUIDs() {
+        return this.preferedRunnerUIDs;
     }
 
     @Override

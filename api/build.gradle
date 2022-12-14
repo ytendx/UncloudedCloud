@@ -11,16 +11,18 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
+    implementation 'org.jetbrains:annotations:20.1.0'
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    api 'org.hibernate:hibernate-core:6.0.1.Final'
-    api 'org.hibernate:hibernate-hikaricp:6.0.1.Final'
+    api 'org.hibernate:hibernate-core:6.1.5.Final'
+    api 'org.hibernate:hibernate-hikaricp:6.1.5.Final'
     api 'com.zaxxer:HikariCP:5.0.1'
-    api 'org.postgresql:postgresql:42.3.4'
-    api 'com.fasterxml.jackson.core:jackson-core:2.13.3'
-    api 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
-    api 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
-    api 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3'
-    api 'org.redisson:redisson:3.17.0'
+    // https://mvnrepository.com/artifact/io.minio/minio
+    api 'io.minio:minio:8.4.6'
+    api 'com.fasterxml.jackson.core:jackson-core:2.14.0'
+    api 'com.fasterxml.jackson.core:jackson-annotations:2.14.0'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
+    api 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0'
+    api 'org.redisson:redisson:3.18.0'
 }

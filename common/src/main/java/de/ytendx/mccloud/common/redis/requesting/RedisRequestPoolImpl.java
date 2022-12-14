@@ -3,13 +3,14 @@ package de.ytendx.mccloud.common.redis.requesting;
 import de.ytendx.mccloud.api.redis.RedisClientProvider;
 import de.ytendx.mccloud.api.redis.requesting.RedisRequestAnswer;
 import de.ytendx.mccloud.api.redis.requesting.RedisRequestPool;
+import de.ytendx.mccloud.api.redis.requesting.RedisRequestPoolChannelContainable;
 import de.ytendx.mccloud.api.redis.requesting.RedisRequestQuestion;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
-public class RedisRequestPoolImpl<Q extends RedisRequestQuestion, A extends RedisRequestAnswer> implements RedisRequestPool<Q, A> {
+public class RedisRequestPoolImpl<Q extends RedisRequestQuestion, A extends RedisRequestAnswer> implements RedisRequestPool<Q, A>, RedisRequestPoolChannelContainable {
 
     private final String channel;
     private final RedisClientProvider redisClientProvider;

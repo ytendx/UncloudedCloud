@@ -22,6 +22,8 @@ public interface ServiceGroup<T extends Service> {
 
     List<T> services();
 
+    String[] preferedRunnerUIDs();
+
     Service createService(ServiceTempConfig serviceConfig);
 
 }

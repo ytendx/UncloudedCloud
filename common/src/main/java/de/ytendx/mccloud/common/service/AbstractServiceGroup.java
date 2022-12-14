@@ -1,6 +1,6 @@
 package de.ytendx.mccloud.common.service;
 
-import de.ytendx.mccloud.api.entity.ServiceGroupModel;
+import de.ytendx.mccloud.api.config.ServiceGroupConfiguration;
 import de.ytendx.mccloud.api.service.Service;
 import de.ytendx.mccloud.api.service.ServiceGroup;
 import de.ytendx.mccloud.api.service.ServiceState;
@@ -21,10 +21,12 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
     private final boolean staticGroup;
     private final ServiceType serviceType;
 
+    private final String[] preferedRunnerUIDs;
+
     // RUNNING
     private final List<T> services;
 
-    protected AbstractServiceGroup(String name, String displayName, int maxPoolMemory, int maxOnlineServices, int minOnlineServices, int maxOnlinePlayers, boolean staticGroup, ServiceType serviceType) {
+    protected AbstractServiceGroup(String name, String displayName, int maxPoolMemory, int maxOnlineServices, int minOnlineServices, int maxOnlinePlayers, boolean staticGroup, ServiceType serviceType, String[] preferedRunnerUIDs) {
         this.name = name;
         this.displayName = displayName;
         this.maxPoolMemory = maxPoolMemory;
@@ -33,10 +35,11 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
         this.maxOnlinePlayers = maxOnlinePlayers;
         this.staticGroup = staticGroup;
         this.serviceType = serviceType;
+        this.preferedRunnerUIDs = preferedRunnerUIDs;
         this.services = new CopyOnWriteArrayList<>();
     }
 
-    protected AbstractServiceGroup(ServiceGroupModel groupModel){
+    protected AbstractServiceGroup(ServiceGroupConfiguration groupModel){
         this.name = groupModel.name();
         this.displayName = groupModel.displayName();
         this.maxPoolMemory = groupModel.maxPoolMemory();
@@ -45,6 +48,7 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
         this.staticGroup = groupModel.isStatic();
         this.serviceType = groupModel.getType();
         this.maxOnlinePlayers = groupModel.maxPlayers();
+        this.preferedRunnerUIDs = groupModel.preferedRunnerUIDs();
         this.services = new CopyOnWriteArrayList<>();
     }
 
@@ -86,6 +90,11 @@ public abstract class AbstractServiceGroup<T extends Service> implements Service
     @Override
     public ServiceType getType() {
         return serviceType;
+    }
+
+    @Override
+    public String[] preferedRunnerUIDs() {
+        return preferedRunnerUIDs;
     }
 
     @Override

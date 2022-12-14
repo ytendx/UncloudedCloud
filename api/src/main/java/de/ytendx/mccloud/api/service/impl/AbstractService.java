@@ -6,14 +6,24 @@ import de.ytendx.mccloud.api.service.config.ServiceTempConfig;
 import de.ytendx.mccloud.api.service.servicedatacontainers.ServiceStartDataContainable;
 import de.ytendx.mccloud.api.service.servicedatacontainers.ServiceStopDataContainable;
 
+import java.util.UUID;
+
 public abstract class AbstractService implements Service {
 
+    private final String id;
     private final ServiceGroup<?> parent;
     private final ServiceTempConfig config;
 
     public AbstractService(ServiceGroup<?> parent, ServiceTempConfig config) {
         this.parent = parent;
         this.config = config;
+
+        this.id = UUID.randomUUID().toString();
+    }
+
+    @Override
+    public String id() {
+        return id;
     }
 
     @Override

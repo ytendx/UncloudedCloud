@@ -21,7 +21,7 @@ public class GeneralRedisContainer {
         this.proxyServices = iRedisClientProvider.client().getMap("proxy-services");
     }
 
-    public RedisClientProvider getiRedisClientProvider() {
+    public RedisClientProvider getRedisClientProvider() {
         return iRedisClientProvider;
     }
 
