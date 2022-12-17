@@ -32,6 +32,9 @@ public class EnviromentalConfigurationValueContainer {
     @NullDefault(value = "./static")
     private String staticPath;
 
+    @NullDefault(value = "1800") // Seconds
+    private String configCacheRenewDelay;
+
     public EnviromentalConfigurationValueContainer() throws IllegalAccessException {
         final List<String> nullEnvVariables = new ArrayList<>();
 
